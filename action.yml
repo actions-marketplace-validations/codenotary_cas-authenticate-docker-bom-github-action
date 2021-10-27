@@ -1,0 +1,21 @@
+name: 'cas authenticate docker image SBOM'
+description: 'Uses the cas CLI to authenticate docker images SBOM'
+branding:
+  icon: 'lock'
+  color: 'green'
+inputs:
+  asset:
+    description: 'Asset to authenticate'
+    required: true
+  signerID:
+    description: 'The signerID used when notarizing, needed to authenticate the asset'
+    required: true
+runs:
+  using: 'docker'
+  image: 'docker://codenotary/cas:bom-docker'
+  args:
+    - a
+    - --bom
+    - ${{ inputs.asset }}
+    - --signerID=${{ inputs.signerID }}
+    - --host=cas.codenotary.com
