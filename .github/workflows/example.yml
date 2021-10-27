@@ -14,7 +14,7 @@ jobs:
 
       - name: authenticate sample asset
         #--> Run the GitHub action
-        uses: codenotary/cas-notarize-asset-github-action@main
+        uses: codenotary/cas-authenticate-docker-bom-github-action@main
         with:
           # Here we provide an image and a signerID to authenticate the SBOM, the image and SBOM were previously signed
           asset: docker://codenotary/cas:bom-docker
